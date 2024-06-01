@@ -7,14 +7,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
-    static int[] massMax = {8};
+    static int[] massMax = {38};
     static long[] massSum = {30L};
     static long go;
     static int i;
