@@ -26,19 +26,10 @@ public class Main {
         long result_of_mult = Main.mult(mass);
         System.out.println("min = " + result_of_min);
         System.out.println("max = " + result_of_max);
-        if (result_of_sum == Long.MIN_VALUE) {
-            System.out.println("Сумма слишком велика");
-        }else{
-            System.out.println("sum = " + result_of_sum);
-        }
-        if (result_of_mult == Long.MIN_VALUE) {
-            System.out.println("Произведение слишком велико");
-        }else{
-            System.out.println("mult = " + result_of_mult);
-        }
-
-
+        System.out.println("sum = " + result_of_sum);
+        System.out.println("mult = " + result_of_mult);
     }
+
 
     static int min(ArrayList<Integer> mass) {
         int min = Integer.MAX_VALUE;
@@ -67,7 +58,7 @@ public class Main {
                 sum = Math.addExact(sum, j);
             }
         } catch (Exception e) {
-            return Long.MIN_VALUE;
+            return 0;
         }
         return sum;
     }
@@ -79,7 +70,7 @@ public class Main {
                 mult = Math.multiplyExact(j, mult);
             }
         } catch (ArithmeticException e) {
-            return Long.MIN_VALUE;
+            return 0;
         }
         return mult;
     }
