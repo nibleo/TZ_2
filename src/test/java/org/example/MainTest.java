@@ -7,13 +7,16 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
-    static int[] massMax = {38};
+    static int[] massMax = {8};
+    static int[] massMin = {0};
     static long[] massSum = {30L};
+    static long[] massMult = {0L};
     static long go;
     static int i;
     @BeforeEach
@@ -27,8 +30,20 @@ class MainTest {
     }
 
 
-    @org.junit.jupiter.api.Test
-    void min() {
+    @ParameterizedTest
+    @ValueSource(ints = {1})
+    void testForMin(int number) throws FileNotFoundException {
+        i = number;
+        String file = "src/test/java/org/example/testik" + i + ".txt";
+        Scanner scanner = new Scanner(new File(file));
+        String[] str = scanner.nextLine().split(" ");
+        ArrayList<Integer> arr = new ArrayList<>();
+        for (int j = 0; j < str.length; j++) {
+            arr.set(j, Integer.parseInt(str[j]));
+        }
+
+        int result = Main.min(arr);
+        assertEquals(massMin[i - 1], result);
 
     }
 
@@ -39,9 +54,9 @@ class MainTest {
         String file = "src/test/java/org/example/testik" + i + ".txt";
         Scanner scanner = new Scanner(new File(file));
         String[] str = scanner.nextLine().split(" ");
-        int[] arr = new int[str.length];
+        ArrayList<Integer> arr = new ArrayList<>();
         for (int j = 0; j < str.length; j++) {
-            arr[j] = Integer.parseInt(str[j]);
+            arr.set(j, Integer.parseInt(str[j]));
         }
 
         int result = Main.max(arr);
@@ -57,9 +72,9 @@ class MainTest {
         String file = "src/test/java/org/example/testik" + i + ".txt";
         Scanner scanner = new Scanner(new File(file));
         String[] str = scanner.nextLine().split(" ");
-        int[] arr = new int[str.length];
+        ArrayList<Integer> arr = new ArrayList<>();
         for (int j = 0; j < str.length; j++) {
-            arr[j] = Integer.parseInt(str[j]);
+            arr.set(j, Integer.parseInt(str[j]));
         }
 
         long result = Main.sum(arr);
@@ -67,7 +82,21 @@ class MainTest {
 
     }
 
-    @org.junit.jupiter.api.Test
-    void mult() {
+    @ParameterizedTest
+    @ValueSource(ints = {1})
+    void testForMult(int number) throws FileNotFoundException {
+        i = number;
+        String file = "src/test/java/org/example/testik" + i + ".txt";
+        Scanner scanner = new Scanner(new File(file));
+        String[] str = scanner.nextLine().split(" ");
+        ArrayList<Integer> arr = new ArrayList<>();
+        for (int j = 0; j < str.length; j++) {
+            arr.set(j, Integer.parseInt(str[j]));
+        }
+
+        long result = Main.mult(arr);
+        assertEquals(massMult[i - 1], result);
+
     }
+
 }
